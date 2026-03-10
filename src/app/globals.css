@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes ribbon-fall {
+  0% {
+    transform: translateY(-20px) rotate(var(--ribbon-rotation, 0deg));
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(calc(var(--ribbon-rotation, 0deg) + 360deg));
+    opacity: 0.8;
+  }
+}
+
+.animate-ribbon-fall {
+  animation: ribbon-fall 4s ease-in forwards;
+  pointer-events: none;
+}
