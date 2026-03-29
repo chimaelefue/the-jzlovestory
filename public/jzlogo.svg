@@ -1,0 +1,13 @@
+<svg width="220" height="120" viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="220" height="120" rx="16" fill="#0B0B0B"/>
+
+  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle"
+        font-family="Playfair Display, serif"
+        font-size="64"
+        letter-spacing="4"
+        fill="none"
+        stroke="#C9A84C"
+        stroke-width="2">
+    JZ
+  </text>
+</svg>
