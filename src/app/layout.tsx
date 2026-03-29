@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "The JZ Love Story — Juliet & John",
-  description: "You're invited to celebrate the wedding of Juliet and John.",
+  title: "The JZ Love Story — Juliet & Zimbocrix",
+  description: "You're invited to celebrate the wedding of Juliet and Zimbocrix.",
 };
 
 export default function RootLayout({

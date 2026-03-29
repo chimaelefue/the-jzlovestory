@@ -1,6 +1,6 @@
 # The JZ Love Story
 
-Wedding website for **Juliet & John** — invitation page now; memories, photos and videos after the wedding.
+Wedding website for **Juliet & Zimbocrix** — invitation page now; memories, photos and videos after the wedding.
 
 ## Tech stack
 
@@ -34,7 +34,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Invitation page flow
 
 1. Red curtain — click/tap to open.
-2. Hero: “Juliet weds John” with your photo.
+2. Hero: “Juliet weds Zimbocrix” with your photo.
 3. Short love writeup.
 4. Three scratch circles — scratch each to reveal the date (day, month, year).
 5. When all three are scratched, party ribbons fall.
