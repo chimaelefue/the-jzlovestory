@@ -5,14 +5,16 @@ import styles from "./Style.module.css";
 
 const PHOTOS = [
   "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774784227/the-jzlovestory/IMG_4184.JPG_vphn6t.jpg",
-  "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774789731/the-jzlovestory/IMG_4182.JPG_1_dvgoe7.jpg",
-  "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774784310/the-jzlovestory/IMG_4189.JPG_fzefoh.jpg",
-  "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774784286/the-jzlovestory/IMG_4179.JPG_rmiltd.jpg",
+  // "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774789731/the-jzlovestory/IMG_4182.JPG_1_dvgoe7.jpg",
   "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774784279/the-jzlovestory/IMG_4188.JPG_qojhgv.jpg",
-  "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774784270/the-jzlovestory/IMG_4186.JPG_yk93lx.jpg",
-  "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774789346/the-jzlovestory/IMG_4180.JPG_1_zlpuvt.jpg",
+
+  // "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774784286/the-jzlovestory/IMG_4179.JPG_rmiltd.jpg",
+   "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774784270/the-jzlovestory/IMG_4186.JPG_yk93lx.jpg",
+    "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774784310/the-jzlovestory/IMG_4189.JPG_fzefoh.jpg",
+ 
+  // "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774789346/the-jzlovestory/IMG_4180.JPG_1_zlpuvt.jpg",
   "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774784314/the-jzlovestory/IMG_4187.JPG_ucseh9.jpg",
-  "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774789564/the-jzlovestory/IMG_4181.JPG_1_y0gglp.jpg",
+  // "https://res.cloudinary.com/dyu76ha5j/image/upload/v1774789564/the-jzlovestory/IMG_4181.JPG_1_y0gglp.jpg",
 ];
 
 const SLIDE_INTERVAL = 1800;
