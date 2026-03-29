@@ -1,28 +1,296 @@
+"use client";
+
 export default function Location() {
   return (
-    <section className="bg-gradient-to-b from-rose-50 to-amber-50 px-6 py-20">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="font-serif text-2xl font-medium text-amber-900 sm:text-3xl">
-          Join us to celebrate
+    <section
+      className="relative px-6 py-24 overflow-hidden bg-[#0d0a08]"
+    >
+      {/* Top accent */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2"
+        style={{
+          width: "50%",
+          height: "1px",
+          background: "linear-gradient(to right, transparent, rgba(201,168,76,0.5), transparent)",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-2xl">
+        {/* Section label */}
+        <p
+          className="text-center"
+          style={{
+            fontFamily: "Georgia, serif",
+            fontSize: "0.7rem",
+            letterSpacing: "0.5em",
+            color: "#C9A84C",
+            textTransform: "uppercase",
+            marginBottom: "1rem",
+          }}
+        >
+          Venue Details
+        </p>
+
+        <h2
+          className="text-center"
+          style={{
+            fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+            fontSize: "clamp(1.6rem, 4vw, 2.6rem)",
+            fontWeight: 300,
+            color: "#f8ecd4",
+            marginBottom: "1rem",
+          }}
+        >
+          Join Us to Celebrate
         </h2>
-        <div className="mt-10 space-y-8">
-          <div>
-            <p className="font-medium uppercase tracking-wider text-amber-800">Ceremony & Reception</p>
-            <p className="mt-2 font-serif text-lg text-stone-700">
-              The Grand Venue
-            </p>
-            <p className="mt-1 text-stone-600">
-              123 Love Lane, City of Joy
-            </p>
-            <p className="mt-1 text-stone-600">
-              Saturday, 15 June 2026 at 2:00 PM
-            </p>
-          </div>
-          <p className="font-serif text-stone-600">
-            We can&apos;t wait to share this day with you. Your love and presence are the
-            greatest gifts.
-          </p>
+
+        {/* Ornament */}
+        <div className="flex justify-center mb-12">
+          <svg width="140" height="16" viewBox="0 0 140 16" fill="none">
+            <line x1="0" y1="8" x2="55" y2="8" stroke="rgba(201,168,76,0.3)" strokeWidth="1" />
+            <path d="M60 8 L65 3 L70 8 L65 13 Z" fill="#C9A84C" />
+            <circle cx="70" cy="8" r="3" fill="#C9A84C" />
+            <path d="M70 8 L75 3 L80 8 L75 13 Z" fill="#C9A84C" />
+            <line x1="85" y1="8" x2="140" y2="8" stroke="rgba(201,168,76,0.3)" strokeWidth="1" />
+          </svg>
         </div>
+
+        {/* Cards */}
+        <div className="grid gap-6 sm:grid-cols-2">
+          {/* Ceremony */}
+          <div
+            style={{
+              background: "linear-gradient(145deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03))",
+              border: "1px solid rgba(201,168,76,0.2)",
+              borderRadius: "12px",
+              padding: "2rem",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+            }}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div
+                style={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: "50%",
+                  background: "rgba(201,168,76,0.15)",
+                  border: "1px solid rgba(201,168,76,0.3)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 1 L8 7 M5 4 L11 4" stroke="#C9A84C" strokeWidth="1.5" strokeLinecap="round" />
+                  <rect x="3" y="6" width="10" height="9" rx="1" stroke="#C9A84C" strokeWidth="1.2" />
+                </svg>
+              </div>
+              <p
+                style={{
+                  fontFamily: "Georgia, serif",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.4em",
+                  color: "#C9A84C",
+                  textTransform: "uppercase",
+                }}
+              >
+                Ceremony
+              </p>
+            </div>
+            <p
+              style={{
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontSize: "1.3rem",
+                fontWeight: 500,
+                color: "#f8ecd4",
+                marginBottom: "0.5rem",
+              }}
+            >
+              Saint Anthony Mary Claret Catholic Church
+            </p>
+            <p style={{ fontFamily: "Georgia, serif", fontSize: "0.85rem", color: "rgba(248,236,212,0.55)", lineHeight: 1.7 }}>
+              Area A, Owerri,<br />
+              Imo State
+            </p>
+            <div
+              className="mt-4 pt-4"
+              style={{ borderTop: "1px solid rgba(201,168,76,0.12)" }}
+            >
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>
+                Saturday, 11 April 2026
+              </p>
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>
+                10:00 AM
+              </p>
+            </div>
+          </div>
+
+          {/* Reception */}
+          <div
+            style={{
+              background: "linear-gradient(145deg, rgba(240,160,176,0.06), rgba(201,168,76,0.03))",
+              border: "1px solid rgba(240,160,176,0.18)",
+              borderRadius: "12px",
+              padding: "2rem",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+            }}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div
+                style={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: "50%",
+                  background: "rgba(240,160,176,0.1)",
+                  border: "1px solid rgba(240,160,176,0.25)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 12 Q8 4 14 12" stroke="#f0a0b0" strokeWidth="1.3" fill="none" />
+                  <circle cx="8" cy="5" r="2" stroke="#f0a0b0" strokeWidth="1.2" />
+                </svg>
+              </div>
+              <p
+                style={{
+                  fontFamily: "Georgia, serif",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.4em",
+                  color: "#f0a0b0",
+                  textTransform: "uppercase",
+                }}
+              >
+                Reception
+              </p>
+            </div>
+            <p
+              style={{
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontSize: "1.3rem",
+                fontWeight: 500,
+                color: "#f8ecd4",
+                marginBottom: "0.5rem",
+              }}
+            >
+              The Place Event Center
+            </p>
+            <p style={{ fontFamily: "Georgia, serif", fontSize: "0.85rem", color: "rgba(248,236,212,0.55)", lineHeight: 1.7 }}>
+              Plot C1/C2 Area TA, New Owerri off Port Harcourt Road,<br />
+              Behind Great Wood Hotel
+            </p>
+            <div
+              className="mt-4 pt-4"
+              style={{ borderTop: "1px solid rgba(240,160,176,0.12)" }}
+            >
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>
+                Saturday, 11 April 2026
+              </p>
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>
+                2:00PM
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Closing note */}
+        <div className="mt-14 text-center">
+          <div className="flex justify-center mb-5">
+            <svg width="80" height="24" viewBox="0 0 80 24" fill="none">
+              <path d="M10 12 Q20 4 40 12 Q60 20 70 12" stroke="rgba(201,168,76,0.4)" strokeWidth="1" fill="none" />
+              <circle cx="40" cy="12" r="2.5" fill="#C9A84C" opacity="0.5" />
+            </svg>
+          </div>
+          <p
+            style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: "clamp(1rem, 2.5vw, 1.2rem)",
+              fontStyle: "italic",
+              color: "rgba(248,236,212,0.65)",
+              lineHeight: 1.8,
+              maxWidth: "480px",
+              margin: "0 auto",
+            }}
+          >
+            Your presence is the greatest gift. We cannot wait to celebrate with
+            everyone who has made our love story possible.
+          </p>
+
+          {/* RSVP cue */}
+          <div className="mt-10 flex justify-center px-4">
+
+            {/* Desktop: single pill */}
+            <div className="hidden sm:flex w-full max-w-2xl rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 px-6 py-4 items-center justify-center gap-3">
+              <span className="text-xs tracking-[0.35em] text-[#C9A84C] uppercase font-serif whitespace-nowrap">
+                RSVP:
+              </span>
+              <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
+                Chukwuemeka Anyanwu
+              </span>
+              <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
+                09067231585
+              </span>
+              <span className="text-[#C9A84C]/40">|</span>
+              <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
+                Obinna Dike
+              </span>
+              <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
+                09057900620
+              </span>
+            </div>
+
+            {/* Mobile: stacked cards */}
+            <div className="flex sm:hidden flex-col w-full max-w-xs gap-3">
+
+              <p className="text-xs tracking-[0.35em] text-[#C9A84C] uppercase font-serif whitespace-nowrap mb-1">
+                RSVP
+              </p>
+
+              {/* Card 1 */}
+              <a
+                href="tel:09067231585"
+                className="flex flex-col items-center gap-1 rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 px-5 py-4 active:bg-[#C9A84C]/20 transition-colors"
+              >
+                <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
+                  Chukwuemeka Anyanwu
+                </span>
+                <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
+                  0906 723 1585
+                </span>
+              </a>
+
+              {/* Card 2 */}
+              <a
+                href="tel:09057900620"
+                className="flex flex-col items-center gap-1 rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 px-5 py-4 active:bg-[#C9A84C]/20 transition-colors"
+              >
+                <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
+                  Obinna Dike
+                </span>
+                <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
+                  0905 790 0620
+                </span>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+
+        {/* Footer */}
+        {/* <div className="mt-20 flex flex-col items-center gap-4">
+          <div
+            style={{
+              width: "60%",
+              height: "1px",
+              background: "linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent)",
+            }}
+          />
+          
+        </div> */}
       </div>
     </section>
   );

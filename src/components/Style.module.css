@@ -1,0 +1,383 @@
+/* ============================================================
+  Style.module.css  — Wedding Invitation, Noir Gold Palette
+  Only classes that cannot be expressed in Tailwind remain here.
+  ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;500&display=swap');
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+:root {
+  --gold:        #C9A84C;
+  --gold-light:  #f5c842;
+  --gold-muted:  rgba(201,168,76,0.25);
+  --blush:       #f0a0b0;
+  --cream:       #f8ecd4;
+
+  --bg-deepest:  #0d0a08;
+  --bg-dark:     #141008;
+  --bg-mid:      #0d0a08;
+  --bg-warm:     #1f1912;
+}
+
+/* ── Skeleton shimmer  (not expressible in Tailwind) ───────── */
+/* Wraps the slide before the image loads */
+.skeletonShimmer {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(
+    90deg,
+    rgba(201,168,76,0.06) 0%,
+    rgba(201,168,76,0.13) 40%,
+    rgba(201,168,76,0.06) 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: 6px;
+}
+
+/* ── CouplePhoto frame corners ─────────────────────────────── */
+.couplePhotoFrame {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.couplePhotoCornerTL {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.couplePhotoCornerBR {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Curtain ───────────────────────────────────────────────── */
+.curtainRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: transparent;
+  overflow: hidden;
+  cursor: pointer;
+}
+.curtainRoot.open {
+  cursor: default;
+  pointer-events: none;
+}
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+}
+.curtainRoot.open .vignette {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.panel {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  z-index: 10;
+  will-change: transform;
+  width: 56%;
+}
+.panelLeft  { left: 0; }
+.panelRight { right: 0; }
+.panelCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.hook {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hookRing {
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid rgba(180,140,50,0.85);
+  border-radius: 50%;
+  margin-top: 3px;
+  background: rgba(140,100,20,0.25);
+}
+.hookShank {
+  width: 1.5px;
+  height: 11px;
+  background: linear-gradient(180deg, rgba(160,120,30,0.8), rgba(100,70,15,0.4));
+}
+.tassel {
+  position: absolute;
+  bottom: 26%;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.4s;
+}
+.tasselLeft  { right: 2px; }
+.tasselRight { left: 2px; }
+.tasselCord {
+  width: 3px;
+  height: 28px;
+  background: linear-gradient(180deg, #d4a840, #9a7220, #c8a030, #8a6018);
+  border-radius: 2px;
+}
+.tasselKnob {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #f0d070 0%, #c8900a 40%, #886010 70%, #5a3c08 100%);
+  box-shadow: 0 2px 7px rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tasselKnobInner {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 35%, #fce890, #b07820);
+}
+.tasselFringe {
+  display: flex;
+  gap: 2.5px;
+  padding-top: 3px;
+}
+.fringeStrand {
+  width: 1.5px;
+  height: 38px;
+  background: linear-gradient(180deg, #c89810 0%, #a07820 45%, #785810 75%, transparent 100%);
+  border-radius: 1px;
+  animation: sway 3.2s ease-in-out infinite;
+  transform-origin: top center;
+}
+.revealBtn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s infinite;
+  z-index: 30;
+  width: max-content;
+  max-width: 80vw;
+}
+.revealBtnInner {
+  padding: clamp(10px, 2.5vw, 14px) clamp(20px, 6vw, 36px);
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #b8860b, #f7d47a, #b8860b);
+  color: #1a0a00;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: clamp(0.6rem, 2.5vw, 0.9rem);
+  white-space: nowrap;
+  text-align: center;
+}
+.curtainRoot.exit {
+  animation: curtainFadeOut 1s ease forwards;
+}
+
+/* ── Hero section ───────────────────────────────────────────── */
+
+/*Grain pseudo-element*/
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 5;
+}
+ 
+
+/* ── Location section (complex gradients / multi-stop) ─────── */
+.locationSection {
+  position: relative;
+  padding: 6rem 1.5rem;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--bg-deepest), var(--bg-dark));
+}
+.locationTopAccent {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.5), transparent);
+}
+.locationCardCeremony {
+  background: linear-gradient(145deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.locationCardReception {
+  background: linear-gradient(145deg, rgba(240,160,176,0.06), rgba(201,168,76,0.03));
+  border: 1px solid rgba(240,160,176,0.18);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.locationIconBadge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.locationIconBadgeGold {
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.3);
+}
+.locationIconBadgeBlush {
+  background: rgba(240,160,176,0.1);
+  border: 1px solid rgba(240,160,176,0.25);
+}
+.locationFooterRule {
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+}
+.locationRsvpBadge {
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 9999px;
+  background: rgba(201,168,76,0.06);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 2rem;
+  margin-top: 2.5rem;
+}
+
+
+
+/* ── Keyframes ─────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;    transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: 0.75; transform: translate(-50%, -50%) scale(0.96); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-2.5deg); }
+  50%       { transform: rotate(2.5deg); }
+}
+
+@keyframes curtainFadeOut {
+  0%   { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-40px); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes scratchRevealPop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes confettiFall {
+  0%   { transform: translateY(-120px) rotate(0deg); opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Shimmer keyframes + gold line ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+ 
+.goldLine {
+  height: 0.5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 168, 76, 0.3) 20%,
+    rgba(201, 168, 76, 0.9) 50%,
+    rgba(201, 168, 76, 0.3) 80%,
+    transparent 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+ 
+/* ── Scroll-drop keyframes ── */
+@keyframes scrollDrop {
+  0%   { transform: scaleY(0); transform-origin: top;    opacity: 0; }
+  40%  { transform: scaleY(1);                           opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+ 
+.scrollDrop {
+  animation: scrollDrop 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+ 
+/* ── Float-up reveal keyframes ── */
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
+.reveal1 { animation: floatUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0s   forwards; opacity: 0; }
+.reveal2 { animation: floatUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards; opacity: 0; }
+.reveal3 { animation: floatUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards; opacity: 0; }
+.reveal4 { animation: floatUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards; opacity: 0; }
+.reveal5 { animation: floatUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards; opacity: 0; }
+ 
+/* ── Corner SVG path draw-on animation ── */
+@keyframes drawCorner {
+  from { stroke-dashoffset: 60; opacity: 0; }
+  to   { stroke-dashoffset: 0;  opacity: 0.55; }
+}
+ 
+.cornerPath {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: drawCorner 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+ 
+/* ── Expand-line animation ── */
+@keyframes expandLine {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+ 
+.expandLine {
+  transform-origin: center;
+  animation: expandLine 1s cubic-bezier(0.22, 1, 0.36, 1) 1s forwards;
+  transform: scaleX(0);
+  opacity: 0;
+}
+ 

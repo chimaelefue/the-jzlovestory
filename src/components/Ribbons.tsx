@@ -2,48 +2,64 @@
 
 import { useEffect, useState } from "react";
 
-const COLORS = ["#e11d48", "#f59e0b", "#84cc16", "#06b6d4", "#8b5cf6", "#ec4899"];
-const RIBBON_COUNT = 50;
+const COLORS = ["#C9A84C", "#f0a0b0", "#166534", "#d4a843", "#f8ecd4", "#1a5c3a"];
+const PIECE_COUNT = 60;
 
-function Ribbon({ delay, color, left }: { delay: number; color: string; left: number }) {
-  const width = 8 + Math.random() * 12;
-  const height = 40 + Math.random() * 80;
-  const rotation = (Math.random() - 0.5) * 60;
-
-  return (
-    <div
-      className="absolute animate-ribbon-fall"
-      style={{
-        left: `${left}%`,
-        top: "-100px",
-        width: `${width}px`,
-        height: `${height}px`,
-        backgroundColor: color,
-        transform: `rotate(${rotation}deg)`,
-        animationDelay: `${delay}s`,
-        boxShadow: "0 0 4px rgba(0,0,0,0.2)",
-      }}
-    />
-  );
+interface Piece {
+  left: number;
+  delay: number;
+  color: string;
+  width: number;
+  height: number;
+  rotation: number;
+  duration: number;
+  isCircle: boolean;
 }
 
 export default function Ribbons() {
-  const [mounted, setMounted] = useState(false);
+  const [pieces, setPieces] = useState<Piece[]>([]);
 
   useEffect(() => {
-    setMounted(true);
+    setPieces(
+      Array.from({ length: PIECE_COUNT }, () => ({
+        left: Math.random() * 100,
+        delay: Math.random() * 2,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        width: 3 + Math.random() * 6,  
+        height: 8 + Math.random() * 16, 
+        rotation: (Math.random() - 0.5) * 80,
+        duration: 2.5 + Math.random() * 2,
+        isCircle: Math.random() > 0.6,
+      }))
+    );
   }, []);
 
-  if (!mounted) return null;
+  if (!pieces.length) return null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
-      {Array.from({ length: RIBBON_COUNT }).map((_, i) => (
-        <Ribbon
+      <style>{`
+        @keyframes confettiFall {
+          0% { transform: translateY(-120px) rotate(0deg); opacity: 1; }
+          80% { opacity: 1; }
+          100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+      `}</style>
+      {pieces.map((p, i) => (
+        <div
           key={i}
-          delay={i * 0.05 + Math.random() * 0.3}
-          color={COLORS[i % COLORS.length]}
-          left={Math.random() * 100}
+          style={{
+            position: "absolute",
+            left: `${p.left}%`,
+            top: 0,
+            width: p.isCircle ? p.width : p.width,
+            height: p.isCircle ? p.width : p.height,
+            borderRadius: p.isCircle ? "50%" : "2px",
+            backgroundColor: p.color,
+            opacity: 0,
+            animation: `confettiFall ${p.duration}s ease-in ${p.delay}s forwards`,
+            transform: `rotate(${p.rotation}deg)`,
+          }}
         />
       ))}
     </div>
