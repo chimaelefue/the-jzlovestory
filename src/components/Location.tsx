@@ -1,10 +1,55 @@
 "use client";
 
+import { LuMapPin } from "react-icons/lu";
+import { MdOutlineCall } from "react-icons/md";
+
 export default function Location() {
   return (
-    <section
-      className="relative px-6 py-24 overflow-hidden bg-[#0d0a08]"
-    >
+    <section className="relative px-6 py-24 overflow-hidden bg-[#0d0a08]">
+      <style>{`
+        @keyframes pulse-zoom {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.25); }
+        }
+        .phone-icon {
+          animation: pulse-zoom 1.6s ease-in-out infinite;
+          display: inline-flex;
+        }
+        .map-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          margin-top: 1rem;
+          padding: 0.45rem 1rem;
+          border-radius: 999px;
+          font-family: Georgia, serif;
+          font-size: 0.7rem;
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          text-decoration: none;
+          transition: background 0.2s, border-color 0.2s;
+          cursor: pointer;
+        }
+        .map-btn-gold {
+          color: #C9A84C;
+          border: 1px solid rgba(201,168,76,0.45);
+          background: rgba(201,168,76,0.08);
+        }
+        .map-btn-gold:hover {
+          background: rgba(201,168,76,0.18);
+          border-color: rgba(201,168,76,0.7);
+        }
+        .map-btn-rose {
+          color: #f0a0b0;
+          border: 1px solid rgba(240,160,176,0.35);
+          background: rgba(240,160,176,0.06);
+        }
+        .map-btn-rose:hover {
+          background: rgba(240,160,176,0.14);
+          border-color: rgba(240,160,176,0.6);
+        }
+      `}</style>
+
       {/* Top accent */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2"
@@ -70,15 +115,10 @@ export default function Location() {
             <div className="flex items-center gap-3 mb-4">
               <div
                 style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: "50%",
+                  width: 36, height: 36, borderRadius: "50%",
                   background: "rgba(201,168,76,0.15)",
                   border: "1px solid rgba(201,168,76,0.3)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
+                  display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
                 }}
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -86,43 +126,32 @@ export default function Location() {
                   <rect x="3" y="6" width="10" height="9" rx="1" stroke="#C9A84C" strokeWidth="1.2" />
                 </svg>
               </div>
-              <p
-                style={{
-                  fontFamily: "Georgia, serif",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.4em",
-                  color: "#C9A84C",
-                  textTransform: "uppercase",
-                }}
-              >
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.65rem", letterSpacing: "0.4em", color: "#C9A84C", textTransform: "uppercase" }}>
                 Ceremony
               </p>
             </div>
-            <p
-              style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: "1.3rem",
-                fontWeight: 500,
-                color: "#f8ecd4",
-                marginBottom: "0.5rem",
-              }}
-            >
+
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.3rem", fontWeight: 500, color: "#f8ecd4", marginBottom: "0.5rem" }}>
               Saint Anthony Mary Claret Catholic Church
             </p>
             <p style={{ fontFamily: "Georgia, serif", fontSize: "0.85rem", color: "rgba(248,236,212,0.55)", lineHeight: 1.7 }}>
-              Area A, Owerri,<br />
-              Imo State
+              Area A, Owerri,<br />Imo State
             </p>
-            <div
-              className="mt-4 pt-4"
-              style={{ borderTop: "1px solid rgba(201,168,76,0.12)" }}
+
+            {/* Map Button */}
+            <a
+              href="https://maps.app.goo.gl/8Ze5JTNMfdfmWC8j9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="map-btn map-btn-gold"
             >
-              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>
-                Saturday, 11 April 2026
-              </p>
-              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>
-                10:00 AM
-              </p>
+              <LuMapPin size={13} />
+              Get Directions
+            </a>
+
+            <div className="mt-4 pt-4" style={{ borderTop: "1px solid rgba(201,168,76,0.12)" }}>
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>Saturday, 11 April 2026</p>
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>10:00 AM</p>
             </div>
           </div>
 
@@ -139,15 +168,10 @@ export default function Location() {
             <div className="flex items-center gap-3 mb-4">
               <div
                 style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: "50%",
+                  width: 36, height: 36, borderRadius: "50%",
                   background: "rgba(240,160,176,0.1)",
                   border: "1px solid rgba(240,160,176,0.25)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
+                  display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
                 }}
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -155,43 +179,32 @@ export default function Location() {
                   <circle cx="8" cy="5" r="2" stroke="#f0a0b0" strokeWidth="1.2" />
                 </svg>
               </div>
-              <p
-                style={{
-                  fontFamily: "Georgia, serif",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.4em",
-                  color: "#f0a0b0",
-                  textTransform: "uppercase",
-                }}
-              >
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.65rem", letterSpacing: "0.4em", color: "#f0a0b0", textTransform: "uppercase" }}>
                 Reception
               </p>
             </div>
-            <p
-              style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: "1.3rem",
-                fontWeight: 500,
-                color: "#f8ecd4",
-                marginBottom: "0.5rem",
-              }}
-            >
+
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.3rem", fontWeight: 500, color: "#f8ecd4", marginBottom: "0.5rem" }}>
               The Place Event Center
             </p>
             <p style={{ fontFamily: "Georgia, serif", fontSize: "0.85rem", color: "rgba(248,236,212,0.55)", lineHeight: 1.7 }}>
-              Plot C1/C2 Area TA, New Owerri off Port Harcourt Road,<br />
-              Behind Great Wood Hotel
+              Plot C1/C2 Area TA, New Owerri off Port Harcourt Road,<br />Behind Great Wood Hotel
             </p>
-            <div
-              className="mt-4 pt-4"
-              style={{ borderTop: "1px solid rgba(240,160,176,0.12)" }}
+
+            {/* Map Button */}
+            <a
+              href="https://maps.app.goo.gl/t7sZ6W1tSg6wbwHm7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="map-btn map-btn-rose"
             >
-              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>
-                Saturday, 11 April 2026
-              </p>
-              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>
-                2:00PM
-              </p>
+              <LuMapPin size={13} />
+              Get Directions
+            </a>
+
+            <div className="mt-4 pt-4" style={{ borderTop: "1px solid rgba(240,160,176,0.12)" }}>
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>Saturday, 11 April 2026</p>
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "0.82rem", color: "rgba(240,160,176,0.8)" }}>2:00PM</p>
             </div>
           </div>
         </div>
@@ -223,74 +236,63 @@ export default function Location() {
           <div className="mt-10 flex justify-center px-4">
 
             {/* Desktop: single pill */}
-            <div className="hidden sm:flex w-full max-w-2xl rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 px-6 py-4 items-center justify-center gap-3">
-              <span className="text-xs tracking-[0.35em] text-[#C9A84C] uppercase font-serif whitespace-nowrap">
-                RSVP:
-              </span>
-              <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
-                Chukwuemeka Anyanwu
-              </span>
-              <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
-                09067231585
-              </span>
+            <div className="hidden sm:flex w-full max-w-2xl rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 px-6 py-4 items-center justify-center gap-4">
+              <span className="text-xs tracking-[0.35em] text-[#C9A84C] uppercase font-serif whitespace-nowrap">RSVP:</span>
+
+              <a href="tel:09067231585" className="flex items-center gap-2 group" style={{ textDecoration: "none" }}>
+                <span className="phone-icon">   
+                 <MdOutlineCall size={13} className="text-[#C9A84C]" />
+                </span>
+                <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">Chukwuemeka · 09067231585</span>
+              </a>
+
               <span className="text-[#C9A84C]/40">|</span>
-              <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
-                Obinna Dike
-              </span>
-              <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
-                09057900620
-              </span>
+
+              <a href="tel:09057900620" className="flex items-center gap-2 group" style={{ textDecoration: "none" }}>
+                <span className="phone-icon" style={{ animationDelay: "0.8s" }}>
+                 <MdOutlineCall size={13} className="text-[#C9A84C]" />
+                </span>
+                <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">Obinna · 09057900620
+                  
+                </span>
+              </a>
             </div>
 
             {/* Mobile: stacked cards */}
             <div className="flex sm:hidden flex-col w-full max-w-xs gap-3">
+              <p className="text-xs tracking-[0.35em] text-[#C9A84C] uppercase font-serif whitespace-nowrap mb-1">RSVP</p>
 
-              <p className="text-xs tracking-[0.35em] text-[#C9A84C] uppercase font-serif whitespace-nowrap mb-1">
-                RSVP
-              </p>
-
-              {/* Card 1 */}
               <a
                 href="tel:09067231585"
-                className="flex flex-col items-center gap-1 rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 px-5 py-4 active:bg-[#C9A84C]/20 transition-colors"
+                className="flex items-center justify-center gap-3 rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 px-5 py-4 active:bg-[#C9A84C]/20 transition-colors"
+                style={{ textDecoration: "none" }}
               >
-                <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
-                  Chukwuemeka Anyanwu
+                <span className="phone-icon">
+                    <MdOutlineCall size={13} className="text-[#C9A84C]" />
                 </span>
-                <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
-                  0906 723 1585
-                </span>
+                <div className="flex flex-col items-start">
+                  <span className="text-xs text-[#C9A84C] uppercase font-serif tracking-widest">Chukwuemeka Anyanwu</span>
+                  <span className="text-xs text-[#C9A84C] uppercase font-serif tracking-widest">0906 723 1585</span>
+                </div>
               </a>
 
-              {/* Card 2 */}
               <a
                 href="tel:09057900620"
-                className="flex flex-col items-center gap-1 rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 px-5 py-4 active:bg-[#C9A84C]/20 transition-colors"
+                className="flex items-center justify-center gap-3 rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 px-5 py-4 active:bg-[#C9A84C]/20 transition-colors"
+                style={{ textDecoration: "none" }}
               >
-                <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
-                  Obinna Dike
+                <span className="phone-icon" style={{ animationDelay: "0.8s" }}>
+                  <MdOutlineCall size={13} className="text-[#C9A84C]" />
                 </span>
-                <span className="text-xs text-[#C9A84C] whitespace-nowrap uppercase font-serif tracking-widest">
-                  0905 790 0620
-                </span>
+                <div className="flex flex-col items-start">
+                  <span className="text-xs text-[#C9A84C] uppercase font-serif tracking-widest">Obinna Dike</span>
+                  <span className="text-xs text-[#C9A84C] uppercase font-serif tracking-widest">0905 790 0620</span>
+                </div>
               </a>
-
             </div>
 
           </div>
         </div>
-
-        {/* Footer */}
-        {/* <div className="mt-20 flex flex-col items-center gap-4">
-          <div
-            style={{
-              width: "60%",
-              height: "1px",
-              background: "linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent)",
-            }}
-          />
-          
-        </div> */}
       </div>
     </section>
   );
