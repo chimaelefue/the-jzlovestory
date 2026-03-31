@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import styles from "./Style.module.css";
 
 
 const SCRATCH_THRESHOLD = 0.50;
@@ -144,7 +145,7 @@ function ScratchCircle({ datePart, label, onScratchComplete, isRevealed }: Scrat
   return (
     <div className="flex flex-col items-center gap-3">
       <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36">
-        
+
         {isRevealed ? (
           <div className="w-full h-full rounded-full border border-[rgba(201,168,76,0.5)]
             bg-linear-to-br from-[rgba(240,160,176,0.18)] to-[rgba(201,168,76,0.12)]
@@ -183,30 +184,37 @@ export default function ScratchReveal({ onAllScratched }: { onAllScratched?: () 
 
   const allDone = completed.every(Boolean);
 
- const handleComplete = (index: number) => {
-  setCompleted((prev) => {
-    const next = [...prev];
-    next[index] = true;
+  const handleComplete = (index: number) => {
+    setCompleted((prev) => {
+      const next = [...prev];
+      next[index] = true;
 
-    // Check AFTER updating
-    const isAllDone = next.every(Boolean);
+      const isAllDone = next.every(Boolean);
 
-    if (isAllDone) {
-      setTimeout(() => {
-        setShowCelebration(true);
-        onAllScratched?.();
-      }, 300);
-    }
+      if (isAllDone) {
+        setTimeout(() => {
+          setShowCelebration(true);
+          onAllScratched?.();
+        }, 300);
+      }
 
-    return next;
-  });
-};
+      return next;
+    });
+  };
 
   const dateParts = [
     { value: "11", label: "Day" },
     { value: "April", label: "Month" },
     { value: "2026", label: "Year" },
   ];
+
+  const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    if (!showCelebration) return;
+    const t = setTimeout(() => setShowScroll(true), 800);
+    return () => clearTimeout(t);
+  }, [showCelebration]);
 
   return (
     <section className="relative py-20 px-4 bg-linear-to-b from-[#0d0a08] to-[#0d0a08]">
@@ -221,12 +229,14 @@ export default function ScratchReveal({ onAllScratched }: { onAllScratched?: () 
           Save the Date
         </p>
 
-        <h2 className="font-['Cormorant_Garamond','Playfair_Display',Georgia,serif] text-[clamp(1.6rem,4vw,2.6rem)] font-lighttext-(--cream) mb-2">
-          Reveal the Date
+        <h2 className="font-['Cormorant_Garamond','Playfair_Display',Georgia,serif] text-[clamp(1.6rem,4vw,2.6rem)] font-light text-(--cream) mb-2 transition-opacity duration-700">
+          {allDone ? "Hurray!" : "Reveal the Date"}
         </h2>
 
-         <p className="font-[Georgia,serif] text-[0.85rem] text-[rgba(248,236,212,0.4)] tracking-widest mb-14">
-          Scratch each circle to uncover our special day
+        <p className="font-[Georgia,serif] text-[0.85rem] text-[rgba(248,236,212,0.4)] tracking-widest mb-14 transition-opacity duration-700">
+          {allDone
+            ? "We can't wait to celebrate with you"
+            : "Scratch each circle to uncover our special day"}
         </p>
 
         <div className="flex flex-wrap justify-center items-end gap-6 sm:gap-8 font-['Cormorant_Garamond',Georgia,serif]">
@@ -241,13 +251,31 @@ export default function ScratchReveal({ onAllScratched }: { onAllScratched?: () 
           ))}
         </div>
 
-        <div className={`mt-10 h-10 flex items-center justify-center transition-opacity duration-700 ${allDone ? "opacity-100" : "opacity-0"}`}>
-          {showCelebration && (
-            <p className="text-xs italic text-[#C9A84C] tracking-wider font-serif">
-              &#10022; Save the Date — 11 April 2026 &#10022;
-            </p>
-          )}
+        {/* Scroll cue — in normal document flow, always renders below circles, never overlaps */}
+        <div
+          className="lg:hidden flex flex-col items-center gap-2 mt-12"
+          style={{
+            opacity: showScroll ? 1 : 0,
+            transition: "opacity 1s ease",
+            pointerEvents: "none",
+          }}
+        >
+          <p
+            className="text-[#C9A84C] uppercase tracking-[0.44em] m-0"
+            style={{ fontFamily: "'Cinzel', serif", fontSize: "0.6rem" }}
+          >
+            Scroll to see more
+          </p>
+          <div
+            className={styles.scrollDrop}
+            style={{
+              width: "1px",
+              height: 40,
+              background: "linear-gradient(to bottom, #C9A84C, transparent)",
+            }}
+          />
         </div>
+
       </div>
 
       <style>{`

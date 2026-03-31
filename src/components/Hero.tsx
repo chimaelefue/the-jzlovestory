@@ -169,7 +169,7 @@ export default function Hero() {
             className={`${styles.reveal5} inline-flex items-center gap-3.5 border border-[rgba(201,168,76,0.4)] hover:border-[rgba(201,168,76,0.7)] rounded-full px-9 py-2.5 bg-[rgba(8,6,2,0.5)] hover:bg-[rgba(20,15,5,0.6)] backdrop-blur-md cursor-default transition-all duration-400`}
             style={{ opacity: 0 }}
           >
-            {["11", "April", "2026"].map((part, i) => (
+            {["#thejzlovestory"].map((part, i) => (
               <span key={part} className="contents">
                 <span
                   className="text-[#d4a93c] font-normal tracking-[0.32em]"
@@ -178,12 +178,6 @@ export default function Hero() {
                   {part}
                 </span>
 
-                {i < 2 && (
-                  <span
-                    key={`dot-${i}`}
-                    className="w-0.75 h-0.75 rounded-full bg-[rgba(201,168,76,0.5)] inline-block shrink-0"
-                  />
-                )}
               </span>
             ))}
           </div>
